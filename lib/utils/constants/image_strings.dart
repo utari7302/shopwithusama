@@ -43,6 +43,9 @@ class UImages{
   static const String promoBanner7 = "assets/images/banners/banner_7.jpg";
   static const String promoBanner8 = "assets/images/banners/banner_8.jpg";
 
+  // Profile
+  static const String user = "assets/images/banners/banner_8.jpg";
+
   // Products
   static const String productImage1 = "assets/images/products/nike-shoes.png";
   static const String productImage2 = "assets/images/products/product-1.png";
