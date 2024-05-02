@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/device/device_utility.dart';
+import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
 class UAppBar extends StatelessWidget implements PreferredSizeWidget {
   const UAppBar(
@@ -20,6 +22,7 @@ class UAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dark = UHelperFunctions.isDarkMode(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: USizes.md),
       child: AppBar(
@@ -27,7 +30,7 @@ class UAppBar extends StatelessWidget implements PreferredSizeWidget {
         leading: showBackArrow
             ? IconButton(
                 onPressed: () => Get.back(),
-                icon: const Icon(Iconsax.arrow_left))
+                icon: Icon(Iconsax.arrow_left,color: dark ? UColors.white : UColors.dark,),)
             : leadingIcon != null ? IconButton(
                 onPressed: () => leadinggOnPressed, icon: Icon(leadingIcon)) : null,
         title: title,
