@@ -52,8 +52,8 @@ class UProductMetaData extends StatelessWidget {
         /// Stock Status
         Row(
           children: [
-            const UProductTitleText(title: 'Status'),
-            const SizedBox(height: USizes.spaceBtwItems,),
+            const UProductTitleText(title: 'Stock:',smallSize: true,),
+            const SizedBox(width: USizes.spaceBtwItems,),
             Text('In Stock',style: Theme.of(context).textTheme.titleMedium,)
           ],
         ),
