@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:readmore/readmore.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
@@ -7,6 +8,7 @@ import 'package:shopwithusama/features/shop/screens/product_details/widgets/prod
 import 'package:shopwithusama/features/shop/screens/product_details/widgets/product_detail_image_slider.dart';
 import 'package:shopwithusama/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:shopwithusama/features/shop/screens/product_details/widgets/rating_share.dart';
+import 'package:shopwithusama/features/shop/screens/product_reviews/product_review.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
@@ -82,9 +84,7 @@ class ProductDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const USectionHeading(title: 'Reviews (199)',showActionButton: false,),
-                      IconButton(onPressed: () {
-
-                      }, icon: const Icon(Iconsax.arrow_right_3))
+                      IconButton(onPressed: () => Get.to(()=> const ProductReviewsScreen()), icon: const Icon(Iconsax.arrow_right_3))
                     ],
                   ),
                   const SizedBox(

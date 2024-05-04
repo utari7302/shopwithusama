@@ -43,6 +43,12 @@ class UImages{
   static const String promoBanner7 = "assets/images/banners/banner_7.jpg";
   static const String promoBanner8 = "assets/images/banners/banner_8.jpg";
 
+  // Product Reviews
+  static const String userProfileImage1 = "assets/images/reviews/review_profile_image_1.jpg";
+  static const String userProfileImage2 = "assets/images/reviews/review_profile_image_2.jpg";
+  static const String userProfileImage3 = "assets/images/reviews/review_profile_image_3.jpg";
+
+
   // Profile
   static const String user = "assets/images/banners/banner_8.jpg";
 
