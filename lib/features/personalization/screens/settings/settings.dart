@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopwithusama/common/widgets/appbar/appbar.dart';
 import 'package:shopwithusama/common/widgets/custom_shapes/containers/primary_header_container.dart';
 import 'package:shopwithusama/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:shopwithusama/common/widgets/list_tile/user_profile_tile.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
+import 'package:shopwithusama/features/personalization/screens/address/address.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 
@@ -54,10 +56,11 @@ class SettingsScreen extends StatelessWidget {
                     height: USizes.spaceBtwItems,
                   ),
 
-                  const USettingsMenuTile(
+                  USettingsMenuTile(
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subTitle: 'Set shopping delivery address',
+                    onTap: () => Get.to(()=> const UserAddressScreen()),
                   ),
                   const USettingsMenuTile(
                     icon: Iconsax.shopping_cart,

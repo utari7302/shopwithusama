@@ -18,8 +18,8 @@ class ProductReviewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const UAppBar(
-        title: Text('Reviews & Rating',),
+      appBar: UAppBar(
+        title: Text('Reviews & Rating',style: Theme.of(context).textTheme.headlineSmall,),
         showBackArrow: true,
       ),
       body: SingleChildScrollView(
