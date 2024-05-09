@@ -22,7 +22,7 @@ class UCircularIcon extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        color: backgroundColor ?? (dark ? UColors.black.withOpacity(0.9) : UColors.white.withOpacity(0.9)),
+        color: backgroundColor != null ? backgroundColor! : dark ? UColors.black.withOpacity(0.9) : UColors.white.withOpacity(0.9),
       ),
       child: IconButton(
         onPressed: onPressed,

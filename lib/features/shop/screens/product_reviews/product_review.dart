@@ -1,16 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shopwithusama/common/widgets/appbar/appbar.dart';
 import 'package:shopwithusama/common/widgets/products/ratings/rating_indicator.dart';
-import 'package:shopwithusama/features/shop/screens/product_reviews/widgets/progress_indicator_and_rating.dart';
 import 'package:shopwithusama/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
 import 'package:shopwithusama/features/shop/screens/product_reviews/widgets/user_review_card.dart';
-import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
-import 'package:shopwithusama/utils/device/device_utility.dart';
 
 class ProductReviewsScreen extends StatelessWidget {
   const ProductReviewsScreen({super.key});

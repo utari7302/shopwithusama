@@ -7,6 +7,7 @@ import 'package:shopwithusama/common/widgets/list_tile/settings_menu_tile.dart';
 import 'package:shopwithusama/common/widgets/list_tile/user_profile_tile.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
 import 'package:shopwithusama/features/personalization/screens/address/address.dart';
+import 'package:shopwithusama/features/shop/screens/cart/cart.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 
@@ -62,10 +63,11 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: 'Set shopping delivery address',
                     onTap: () => Get.to(()=> const UserAddressScreen()),
                   ),
-                  const USettingsMenuTile(
+                  USettingsMenuTile(
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subTitle: 'Add, remove products and move to checkout',
+                    onTap: () => Get.to(()=> const CartScreen()),
                   ),
                   const USettingsMenuTile(
                     icon: Iconsax.bag_tick,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopwithusama/common/widgets/appbar/appbar.dart';
-import 'package:shopwithusama/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:shopwithusama/features/personalization/screens/address/add_new_address.dart';
 import 'package:shopwithusama/features/personalization/screens/address/widgets/single_address.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
