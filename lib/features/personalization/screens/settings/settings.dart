@@ -8,6 +8,7 @@ import 'package:shopwithusama/common/widgets/list_tile/user_profile_tile.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
 import 'package:shopwithusama/features/personalization/screens/address/address.dart';
 import 'package:shopwithusama/features/shop/screens/cart/cart.dart';
+import 'package:shopwithusama/features/shop/screens/order/order.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 
@@ -69,10 +70,11 @@ class SettingsScreen extends StatelessWidget {
                     subTitle: 'Add, remove products and move to checkout',
                     onTap: () => Get.to(()=> const CartScreen()),
                   ),
-                  const USettingsMenuTile(
+                  USettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'My Order',
                     subTitle: 'In-progress and completed orders',
+                    onTap: () => Get.to(()=> const OrderScreen()),
                   ),
                   const USettingsMenuTile(
                     icon: Iconsax.bank,
