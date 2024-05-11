@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopwithusama/common/widgets/appbar/appbar.dart';
 import 'package:shopwithusama/common/widgets/appbar/tabbar.dart';
 import 'package:shopwithusama/common/widgets/custom_shapes/containers/search_container.dart';
@@ -6,6 +7,7 @@ import 'package:shopwithusama/common/widgets/layouts/grid_layout.dart';
 import 'package:shopwithusama/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
 import 'package:shopwithusama/common/widgets/brands/brand_card.dart';
+import 'package:shopwithusama/features/shop/screens/brand/all_brands.dart';
 import 'package:shopwithusama/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
@@ -61,7 +63,7 @@ class Store extends StatelessWidget {
                       ),
 
                       /// Featured Brands
-                      const USectionHeading(title: 'Feature Brands'),
+                      USectionHeading(title: 'Feature Brands',onPressed: () => Get.to(()=> const AllBrandsScreen()),),
                       const SizedBox(
                         height: USizes.spaceBtwItems / 1.5,
                       ),

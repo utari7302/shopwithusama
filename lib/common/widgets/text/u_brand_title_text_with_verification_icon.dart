@@ -25,6 +25,7 @@ class UBrandTitleWithVerification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Flexible(
             child: UBrandTitleText(

@@ -67,7 +67,8 @@ class UProductCardVertical extends StatelessWidget {
                       child: UCircularIcon(
                         icon: Iconsax.heart5,
                         color: Colors.red,
-                      ))
+                      ),
+                  )
                 ],
               ),
             ),
@@ -95,6 +96,8 @@ class UProductCardVertical extends StatelessWidget {
                   padding: EdgeInsets.only(left: USizes.sm),
                   child: UProductPriceText(price: '35.0', isLarge: true,),
                 ),
+
+                /// Add to cart button
                 Container(
                   decoration: const BoxDecoration(
                       color: UColors.dark,
