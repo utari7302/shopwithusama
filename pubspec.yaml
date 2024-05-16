@@ -19,6 +19,9 @@ dependencies:
   url_launcher: ^6.2.5
   flutter_native_splash: ^2.3.13
   smooth_page_indicator: ^1.1.0
+  lottie: ^3.1.1
+  connectivity_plus: ^6.0.3
+
 
   # Icons
   iconsax: ^0.0.8
@@ -33,7 +36,11 @@ dependencies:
   carousel_slider: ^4.2.1
   readmore: ^2.2.0
   flutter_rating_bar: ^4.0.1
+
+  # Firebase
   firebase_core: ^2.31.0
+  firebase_auth: ^4.19.5
+  cloud_firestore: ^4.17.3
 
 #----------- PACKAGES END ----------------#
 

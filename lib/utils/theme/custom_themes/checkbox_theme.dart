@@ -9,7 +9,7 @@ class UCheckBoxTheme{
       if(states.contains(MaterialState.selected)){
         return Colors.blue;
       }else{
-        return Colors.black;
+        return Colors.white;
       }
     }),
     checkColor: MaterialStateColor.resolveWith((states) {

@@ -20,6 +20,7 @@ class UImages{
   static const String deliveredInPlaneIlustration = "assets/images/animations/sammy-line-come-back-later.png";
   static const String deliveredEmailIlustration = "assets/images/animations/sammy-line-man-receives-a-mail.png";
   static const String verifyIlustration = "assets/images/animations/sammy-line-travel-backpack-with-passport-and-air-ticket.gif";
+  static const String docerAnimation = "assets/images/animations/141594-animation-of-docer.json";
 
   // Category Icons
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
