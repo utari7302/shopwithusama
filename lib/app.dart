@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopwithusama/binding/general_bindings.dart';
-import 'package:shopwithusama/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/theme/theme.dart';
 

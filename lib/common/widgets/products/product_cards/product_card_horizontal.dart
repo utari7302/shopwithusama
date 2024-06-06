@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:shopwithusama/common/styles/shadows.dart';
 import 'package:shopwithusama/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:shopwithusama/common/widgets/icons/u_circular_icon.dart';
 import 'package:shopwithusama/common/widgets/images/u_rounded_image.dart';
