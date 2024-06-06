@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "771828392927",
+    "project_id": "shopwithusama-5ec33",
+    "storage_bucket": "shopwithusama-5ec33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:771828392927:android:344f37c56c25552e391a6a",
+        "android_client_info": {
+          "package_name": "com.shopwithus.shopwithusama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "771828392927-a7sn2c2np74gdjbu7b3oe4gbvucqu2ap.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shopwithus.shopwithusama",
+            "certificate_hash": "78b528348c5f334a8c5bae2dfc6954fe8261659b"
+          }
+        },
+        {
+          "client_id": "771828392927-kn1i0uveh1t1el835kmroi413fcoem5o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0lOfWmibQOOPT83EaCuiiB1YMXb_PJDI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "771828392927-kn1i0uveh1t1el835kmroi413fcoem5o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "771828392927-jl6q3gi1htvcb6961gp65ug0o9kb454j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shopwithus.shopwithusama"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
