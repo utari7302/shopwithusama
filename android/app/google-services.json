@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "771828392927-a7sn2c2np74gdjbu7b3oe4gbvucqu2ap.apps.googleusercontent.com",
+          "client_id": "771828392927-nk0ue78qj3bqupq842foa9ofhklvqej5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.shopwithus.shopwithusama",
-            "certificate_hash": "78b528348c5f334a8c5bae2dfc6954fe8261659b"
+            "certificate_hash": "7e0232c6570c321b7770efd70f0919ca575d3c98"
           }
         },
         {

@@ -12,11 +12,11 @@ class UHomeCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: 85,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemCount: 6,
+        itemCount: 12,
         itemBuilder: (_, index) {
           return UVerticalImageText(
             image: UImages.shoeIcon,

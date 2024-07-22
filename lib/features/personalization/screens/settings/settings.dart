@@ -12,6 +12,8 @@ import 'package:shopwithusama/features/shop/screens/order/order.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 
+import '../../../../data/repositories/authentication/authentication_repository.dart';
+
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});
 
@@ -141,7 +143,7 @@ class SettingsScreen extends StatelessWidget {
                   const SizedBox(height: USizes.spaceBtwSections,),
                   SizedBox(
                     width: double.infinity,
-                    child: OutlinedButton(onPressed: () {  },
+                    child: OutlinedButton(onPressed: () =>  AuthenticationRepository.instance.logout(),
                     child: const Text('Logout'),),
                   ),
                   const SizedBox(height: USizes.spaceBtwSections * 2.5,),
