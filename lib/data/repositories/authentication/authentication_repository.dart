@@ -71,7 +71,7 @@ class AuthenticationRepository extends GetxController {
     }
   }
 
-  /// [EmailAuthentication] - ReAuthentication User
+
 
   /// [EmailAuthentication] - Mail Verification
   Future<void> sendEmailVerification() async {
@@ -85,10 +85,21 @@ class AuthenticationRepository extends GetxController {
       throw 'Something went wrong. Please try again';
     }
   }
+
   /// [EmailAuthentication] - Forget Password
-  /// [EmailAuthentication] - SignIn
+  Future<void> sendPasswordResetEmail(String email) async {
+    try{
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    }on FirebaseAuthException catch (e) {
+      throw UFirebaseAuthException(e.code).message;
+    } on FirebaseException catch (e) {
+      throw UFirebaseException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
 
-
+  /// [EmailAuthentication] - ReAuthentication User
 
   /// [GoogleAuthentication] - Google
   Future<UserCredential> signInWithGoogle() async {
