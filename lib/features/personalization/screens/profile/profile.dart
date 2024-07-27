@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopwithusama/common/widgets/appbar/appbar.dart';
 import 'package:shopwithusama/common/widgets/images/u_circular_image.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
+import 'package:shopwithusama/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:shopwithusama/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
+import 'package:shopwithusama/utils/shimmer/shimmer.dart';
+
+import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return Scaffold(
       appBar: const UAppBar(
         showBackArrow: true,
@@ -25,13 +31,29 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const UCircularImage(
-                      image: UImages.user,
-                      width: 80,
-                      height: 80,
+                    Obx(
+                      () {
+                        final networkImage =
+                            controller.user.value.profilePicture;
+                        final image = networkImage.isNotEmpty
+                            ? networkImage
+                            : UImages.user;
+                        return controller.imageUploading.value
+                            ? const UShimmerEffect(
+                                width: 80,
+                                height: 80,
+                                radius: 80,
+                              )
+                            : UCircularImage(
+                                image: image,
+                                width: 80,
+                                height: 80,
+                                isNetworkImage: networkImage.isNotEmpty,
+                              );
+                      },
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () => controller.uploadUserProfilePicture(),
                         child: const Text('Change Profile Picture'))
                   ],
                 ),
@@ -55,12 +77,12 @@ class ProfileScreen extends StatelessWidget {
 
               UProfileMenu(
                 title: 'Name',
-                value: 'Muhammad Usama',
-                onPressed: () {},
+                value: controller.user.value.fullName,
+                onPressed: () => Get.to(() => const ChangeName()),
               ),
               UProfileMenu(
                 title: 'Username',
-                value: 'm_usama',
+                value: controller.user.value.email,
                 onPressed: () {},
               ),
 
@@ -82,17 +104,17 @@ class ProfileScreen extends StatelessWidget {
 
               UProfileMenu(
                 title: 'User ID',
-                value: '45689',
+                value: controller.user.value.id,
                 onPressed: () {},
               ),
               UProfileMenu(
                 title: 'E-mail',
-                value: 'm_usama@gmail.com',
+                value: controller.user.value.email,
                 onPressed: () {},
               ),
               UProfileMenu(
                 title: 'Phone Number',
-                value: '+92-3214846448',
+                value: controller.user.value.phoneNumber,
                 onPressed: () {},
               ),
               UProfileMenu(
@@ -113,7 +135,7 @@ class ProfileScreen extends StatelessWidget {
 
               Center(
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => controller.deleteAccountWarningPopup(),
                     child: const Text(
                       'Close Account',
                       style: TextStyle(color: Colors.red),

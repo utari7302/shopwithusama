@@ -33,6 +33,8 @@ class UFirebaseAuthException implements Exception {
         return 'The quota for this operation has been exceeded. Please try again later.';
       case 'account-exists-with-different-credential':
         return 'An account already exists with the same email address but different credential';
+      case 'invalid-credential':
+        return 'The supplied auth credential is malformed or has expired.';
       default:
         return 'An unknown error occurred. Please try again.';
     }
