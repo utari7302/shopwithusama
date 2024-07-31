@@ -7,6 +7,7 @@ import 'package:shopwithusama/common/widgets/layouts/grid_layout.dart';
 import 'package:shopwithusama/common/widgets/products/cart/cart_menu_icon.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
 import 'package:shopwithusama/common/widgets/brands/brand_card.dart';
+import 'package:shopwithusama/features/shop/controllers/category_controller.dart';
 import 'package:shopwithusama/features/shop/screens/brand/all_brands.dart';
 import 'package:shopwithusama/features/shop/screens/store/widgets/category_tab.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
@@ -18,9 +19,10 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final categories = CategoryController.instance.featuredCategories;
     final dark = UHelperFunctions.isDarkMode(context);
     return DefaultTabController(
-      length: 5,
+      length: categories.length,
       child: Scaffold(
         appBar: UAppBar(
           title: Text(
@@ -80,34 +82,14 @@ class Store extends StatelessWidget {
                     ],
                   ),
                 ),
-                bottom: const UTabBar(tabs: [
-                  Tab(
-                    child: Text('Sports'),
-                  ),
-                  Tab(
-                    child: Text('Furniture'),
-                  ),
-                  Tab(
-                    child: Text('Electronics'),
-                  ),
-                  Tab(
-                    child: Text('Clothes'),
-                  ),
-                  Tab(
-                    child: Text('Cosmetics'),
-                  ),
-                ]),
+                bottom: UTabBar(
+                  tabs: categories.map((category) => Tab(child: Text(category.name),),).toList(),
+                )
               )
             ];
           },
-          body: const TabBarView(
-            children: [
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-              UCategoryTab(),
-            ],
+          body: TabBarView(
+            children: categories.map((category) => UCategoryTab(category: category,),).toList(),
           ),
         ),
       ),

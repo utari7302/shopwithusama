@@ -3,12 +3,15 @@ import 'package:shopwithusama/common/widgets/brands/brand_show_case.dart';
 import 'package:shopwithusama/common/widgets/layouts/grid_layout.dart';
 import 'package:shopwithusama/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
+import 'package:shopwithusama/features/shop/models/category_model.dart';
 import 'package:shopwithusama/utils/constants/image_strings.dart';
 
 import '../../../../../utils/constants/sizes.dart';
 
 class UCategoryTab extends StatelessWidget {
-  const UCategoryTab({super.key});
+  const UCategoryTab({super.key, required this.category});
+
+  final CategoryModel category;
 
   @override
   Widget build(BuildContext context) {
