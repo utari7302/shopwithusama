@@ -8,6 +8,8 @@ import 'package:shopwithusama/common/widgets/products/product_cards/product_card
 import 'package:shopwithusama/features/shop/screens/home/home.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 
+import '../../models/product.dart';
+
 class FavouriteScreen extends StatelessWidget {
   const FavouriteScreen({super.key});
 
@@ -32,7 +34,7 @@ class FavouriteScreen extends StatelessWidget {
             Padding(
                 padding: const EdgeInsets.all(USizes.defaultSpace),
               child: UGridLayout(itemCount: 6, itemBuilder: (_, index) {
-                return const UProductCardVertical();
+                return UProductCardVertical(product: ProductModel.empty());
               },),
             )
           ],

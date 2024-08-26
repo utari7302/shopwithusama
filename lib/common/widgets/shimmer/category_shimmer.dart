@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shopwithusama/common/widgets/shimmer/shimmer.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
-import 'package:shopwithusama/utils/shimmer/shimmer.dart';
 
 class UCategoryShimmer extends StatelessWidget {
   const UCategoryShimmer({super.key, this.itemCount = 6});

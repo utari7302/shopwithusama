@@ -12,8 +12,12 @@ import 'package:shopwithusama/features/shop/screens/product_reviews/product_revi
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
+import '../../models/product.dart';
+
 class ProductDetailsScreen extends StatelessWidget {
-  const ProductDetailsScreen({super.key});
+  const ProductDetailsScreen({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

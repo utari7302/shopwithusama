@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shopwithusama/common/widgets/shimmer/shimmer.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
-import 'package:shopwithusama/utils/shimmer/shimmer.dart';
 
 class UCircularImage extends StatelessWidget {
   const UCircularImage(

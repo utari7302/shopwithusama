@@ -4,6 +4,7 @@ import 'package:shopwithusama/common/widgets/layouts/grid_layout.dart';
 import 'package:shopwithusama/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
 import 'package:shopwithusama/features/shop/models/category_model.dart';
+import 'package:shopwithusama/features/shop/models/product.dart';
 import 'package:shopwithusama/utils/constants/image_strings.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -37,7 +38,7 @@ class UCategoryTab extends StatelessWidget {
             },),
             const SizedBox(height: USizes.spaceBtwItems,),
             UGridLayout(itemCount: 2, itemBuilder: (_, index) {
-              return const UProductCardVertical();
+              return UProductCardVertical(product: ProductModel.empty(),);
             },),
             const SizedBox(height: USizes.spaceBtwItems,),
           ],

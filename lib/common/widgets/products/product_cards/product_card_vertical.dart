@@ -8,20 +8,27 @@ import 'package:shopwithusama/common/widgets/images/u_rounded_image.dart';
 import 'package:shopwithusama/common/widgets/products/product_cards/product_price_text.dart';
 import 'package:shopwithusama/common/widgets/text/product_title_text.dart';
 import 'package:shopwithusama/common/widgets/text/u_brand_title_text_with_verification_icon.dart';
+import 'package:shopwithusama/features/shop/controllers/product_controller.dart';
+import 'package:shopwithusama/features/shop/models/product.dart';
 import 'package:shopwithusama/features/shop/screens/product_details/product_details.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
+import 'package:shopwithusama/utils/constants/enums.dart';
 import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
 class UProductCardVertical extends StatelessWidget {
-  const UProductCardVertical({super.key});
+  const UProductCardVertical({super.key, required this.product});
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
+    final controller = ProductController.instance;
+    final salePercentage = controller.calculateSalePercentage(product.price, product.salePrice);
     final dark = UHelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(()=> const ProductDetailsScreen()),
+      onTap: () => Get.to(()=> ProductDetailsScreen(product: product)),
       child: Container(
         width: 180,
         decoration: BoxDecoration(
@@ -29,18 +36,23 @@ class UProductCardVertical extends StatelessWidget {
             borderRadius: BorderRadius.circular(USizes.productImageRadius),
             color: dark ? UColors.darkerGrey : UColors.white),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             /// Thumbnail, Wishlist button, Discount Tag
             URoundedContainer(
+              width: double.infinity,
               height: 180,
               padding: const EdgeInsets.all(USizes.sm),
               backgroundColor: dark ? UColors.dark : UColors.light,
               child: Stack(
                 children: [
                   /// Thumbnail Image
-                  const URoundedImage(
-                    imageUrl: UImages.productImage1,
-                    applyImageRadius: true,
+                  Center(
+                    child: URoundedImage(
+                      imageUrl: product.thumbnail,
+                      applyImageRadius: true,
+                      isNetworkImage: true,
+                    ),
                   ),
 
                   /// Size Tag
@@ -52,7 +64,7 @@ class UProductCardVertical extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: USizes.sm, vertical: USizes.xs),
                       child: Text(
-                        '25%',
+                        '$salePercentage%',
                         style: Theme.of(context)
                             .textTheme
                             .labelLarge!
@@ -75,26 +87,49 @@ class UProductCardVertical extends StatelessWidget {
 
             const SizedBox(height: USizes.spaceBtwItems / 2,),
             /// Details
-            const Padding(
-                padding: EdgeInsets.only(left: USizes.sm),
+            Padding(
+                padding: const EdgeInsets.only(left: USizes.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  UProductTitleText(title: 'Green Nike Air Shoes',smallSize: true,),
-                  SizedBox(height: USizes.spaceBtwItems / 2,),
-                  UBrandTitleWithVerification(title: 'Nike',),
+                  UProductTitleText(title: product.title,smallSize: true,),
+                  const SizedBox(height: USizes.spaceBtwItems / 4,),
+                  UBrandTitleWithVerification(title: product.brand!.name,),
 
                 ],
               ),
             ),
             const Spacer(),
 
+            /// Price Row
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: USizes.sm),
-                  child: UProductPriceText(price: '35.0', isLarge: true,),
+                Flexible(
+                  child: Column(
+                    children: [
+
+
+                      /// Price, Show sale price as main price if sale exist
+                      Padding(
+                        padding: const EdgeInsets.only(left: USizes.sm),
+                        child: Row(
+                          children: [
+                            UProductPriceText(price: controller.getProductPrice(product), isLarge: true,),
+                            const SizedBox(width: 10,),
+                            if(product.productType == ProductType.single.toString() && product.salePrice > 0)
+                              Padding(
+                                padding: const EdgeInsets.only(left: USizes.sm),
+                                child: Text(
+                                  product.price.toString(),
+                                  style: Theme.of(context).textTheme.headlineSmall!.apply(decoration: TextDecoration.lineThrough),
+                                )
+                              ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
 
                 /// Add to cart button

@@ -4,6 +4,8 @@ import 'package:shopwithusama/common/widgets/layouts/grid_layout.dart';
 import 'package:shopwithusama/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 
+import '../../../../features/shop/models/product.dart';
+
 class USortableProducts extends StatelessWidget {
   const USortableProducts({
     super.key,
@@ -22,7 +24,7 @@ class USortableProducts extends StatelessWidget {
         const SizedBox(height: USizes.spaceBtwItems,),
 
         /// Products
-        UGridLayout(itemCount: 8, itemBuilder: (_, __) => const UProductCardVertical(),)
+        UGridLayout(itemCount: 8, itemBuilder: (_, __) => UProductCardVertical(product: ProductModel.empty(),),)
       ],
     );
   }

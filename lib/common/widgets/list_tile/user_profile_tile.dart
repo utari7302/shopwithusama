@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopwithusama/common/widgets/images/u_circular_image.dart';
+import 'package:shopwithusama/common/widgets/shimmer/shimmer.dart';
 import 'package:shopwithusama/features/personalization/controllers/user_controller.dart';
 import 'package:shopwithusama/features/personalization/screens/profile/profile.dart';
 import 'package:shopwithusama/utils/constants/image_strings.dart';
 
 import '../../../utils/constants/colors.dart';
-import '../../../utils/shimmer/shimmer.dart';
 
 class UUserProfileTile extends StatelessWidget {
   const UUserProfileTile({

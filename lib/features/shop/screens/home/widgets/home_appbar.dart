@@ -6,7 +6,8 @@ import 'package:shopwithusama/features/personalization/controllers/user_controll
 import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/text_strings.dart';
 
-import '../../../../../utils/shimmer/shimmer.dart';
+import '../../../../../common/widgets/shimmer/shimmer.dart';
+
 
 class UHomeAppBar extends StatelessWidget {
   const UHomeAppBar({

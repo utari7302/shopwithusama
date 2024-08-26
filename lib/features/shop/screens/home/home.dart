@@ -4,13 +4,14 @@ import 'package:shopwithusama/common/widgets/custom_shapes/containers/primary_he
 import 'package:shopwithusama/common/widgets/custom_shapes/containers/search_container.dart';
 import 'package:shopwithusama/common/widgets/layouts/grid_layout.dart';
 import 'package:shopwithusama/common/widgets/products/product_cards/product_card_vertical.dart';
+import 'package:shopwithusama/common/widgets/shimmer/vertical_product_shimmer.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
+import 'package:shopwithusama/features/shop/controllers/product_controller.dart';
 import 'package:shopwithusama/features/shop/screens/all_products/all_products.dart';
 import 'package:shopwithusama/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:shopwithusama/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:shopwithusama/features/shop/screens/home/widgets/promo_slider.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';
-import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,6 +19,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -72,19 +74,33 @@ class HomeScreen extends StatelessWidget {
                   const EdgeInsets.symmetric(horizontal: USizes.defaultSpace),
               child: Column(
                 children: [
-                  const UPromoSlider(banners: [UImages.promoBanner1,UImages.promoBanner2,UImages.promoBanner3,UImages.promoBanner4],),
+                  const UPromoSlider(),
                   const SizedBox(
                     height: USizes.spaceBtwSections / 2,
                   ),
-
                   USectionHeading(
                     title: 'Popular Products',
                     showActionButton: true,
                     textColor: UColors.black,
-                    onPressed: () => Get.to(()=>const AllProductsScreen()),
+                    onPressed: () => Get.to(() => const AllProductsScreen()),
                   ),
+                  Obx(
+                    () {
+                      if (controller.isLoading.value)
+                        return const UVerticalProductShimmer();
 
-                  UGridLayout( itemCount: 2, itemBuilder: (_, index) => const UProductCardVertical(),),
+                      if (controller.featuredProducts.isEmpty) {
+                        return Center(
+                            child: Text('No Data Found!',
+                                style: Theme.of(context).textTheme.bodyMedium));
+                      }
+
+                      return UGridLayout(
+                          itemCount: controller.featuredProducts.length,
+                          itemBuilder: (_, index) => UProductCardVertical(
+                              product: controller.featuredProducts[index]));
+                    },
+                  )
                 ],
               ),
             ),

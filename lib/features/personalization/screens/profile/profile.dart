@@ -7,8 +7,8 @@ import 'package:shopwithusama/features/personalization/screens/profile/widgets/c
 import 'package:shopwithusama/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
-import 'package:shopwithusama/utils/shimmer/shimmer.dart';
 
+import '../../../../common/widgets/shimmer/shimmer.dart';
 import '../../controllers/user_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
