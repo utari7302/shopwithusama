@@ -6,7 +6,7 @@ import 'package:shopwithusama/common/widgets/layouts/grid_layout.dart';
 import 'package:shopwithusama/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:shopwithusama/common/widgets/shimmer/vertical_product_shimmer.dart';
 import 'package:shopwithusama/common/widgets/text/section_heading.dart';
-import 'package:shopwithusama/features/shop/controllers/product_controller.dart';
+import 'package:shopwithusama/features/shop/controllers/product/product_controller.dart';
 import 'package:shopwithusama/features/shop/screens/all_products/all_products.dart';
 import 'package:shopwithusama/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:shopwithusama/features/shop/screens/home/widgets/home_categories.dart';

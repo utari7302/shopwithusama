@@ -3,7 +3,7 @@ import 'package:shopwithusama/features/shop/models/product.dart';
 import 'package:shopwithusama/utils/constants/enums.dart';
 import 'package:shopwithusama/utils/popups/loaders.dart';
 
-import '../../../data/repositories/products/product_repository.dart';
+import '../../../../data/repositories/products/product_repository.dart';
 
 class ProductController extends GetxController{
   static ProductController get instance => Get.find();

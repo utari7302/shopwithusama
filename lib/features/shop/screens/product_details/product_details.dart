@@ -9,6 +9,7 @@ import 'package:shopwithusama/features/shop/screens/product_details/widgets/prod
 import 'package:shopwithusama/features/shop/screens/product_details/widgets/product_meta_data.dart';
 import 'package:shopwithusama/features/shop/screens/product_details/widgets/rating_share.dart';
 import 'package:shopwithusama/features/shop/screens/product_reviews/product_review.dart';
+import 'package:shopwithusama/utils/constants/enums.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
@@ -21,13 +22,12 @@ class ProductDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = UHelperFunctions.isDarkMode(context);
     return Scaffold(
       bottomNavigationBar: const UBottomAddToCart(),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const UProductImageSlider(),
+            UProductImageSlider(product: product),
             Padding(
               padding: const EdgeInsets.only(
                 right: USizes.defaultSpace,
@@ -35,19 +35,18 @@ class ProductDetailsScreen extends StatelessWidget {
                 bottom: USizes.defaultSpace,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   /// Rating
                   const URatingAndShare(),
 
                   /// Price, Title, Stock & Brand
-                  const UProductMetaData(),
+                  UProductMetaData(product: product),
 
                   /// Attributes
-                  const UProductAttribute(),
+                  if(product.productType == ProductType.variable.toString()) UProductAttribute(product: product),
 
-                  const SizedBox(
-                    height: USizes.spaceBtwSections,
-                  ),
+                  if(product.productType == ProductType.variable.toString()) const SizedBox(height: USizes.spaceBtwSections,),
 
                   /// Checkout Button
                   SizedBox(
@@ -67,8 +66,8 @@ class ProductDetailsScreen extends StatelessWidget {
                   const SizedBox(
                     height: USizes.spaceBtwItems,
                   ),
-                  const ReadMoreText(
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+                  ReadMoreText(
+                    product.description ?? '',
                     trimLines: 2,
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Show more',

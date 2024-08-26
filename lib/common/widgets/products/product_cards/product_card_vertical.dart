@@ -8,7 +8,7 @@ import 'package:shopwithusama/common/widgets/images/u_rounded_image.dart';
 import 'package:shopwithusama/common/widgets/products/product_cards/product_price_text.dart';
 import 'package:shopwithusama/common/widgets/text/product_title_text.dart';
 import 'package:shopwithusama/common/widgets/text/u_brand_title_text_with_verification_icon.dart';
-import 'package:shopwithusama/features/shop/controllers/product_controller.dart';
+import 'package:shopwithusama/features/shop/controllers/product/product_controller.dart';
 import 'package:shopwithusama/features/shop/models/product.dart';
 import 'package:shopwithusama/features/shop/screens/product_details/product_details.dart';
 import 'package:shopwithusama/utils/constants/colors.dart';

@@ -1,4 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopwithusama/common/widgets/appbar/appbar.dart';
 import 'package:shopwithusama/common/widgets/custom_shapes/curved_edges/curved_edges_widget.dart';
@@ -9,14 +12,23 @@ import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
+import '../../../controllers/product/image_controller.dart';
+import '../../../models/product.dart';
+
 class UProductImageSlider extends StatelessWidget {
   const UProductImageSlider({
-    super.key,
+    super.key, required this.product,
   });
+
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {
     final dark = UHelperFunctions.isDarkMode(context);
+
+    final controller = Get.put(ImageController());
+    final images = controller.getAllProductImages(product);
+
     return UCurvedEdgeWidget(
       child: Container(
         color: dark ? UColors.darkerGrey : UColors.light,
@@ -24,13 +36,22 @@ class UProductImageSlider extends StatelessWidget {
           children: [
 
             /// Main Large Image
-            const SizedBox(
+             SizedBox(
               height: 400,
               child: Padding(
-                padding: EdgeInsets.all(USizes.productImageRadius * 2),
+                padding: const EdgeInsets.all(USizes.productImageRadius * 2),
                 child: Center(
-                    child:
-                    Image(image: AssetImage(UImages.productImage1))),
+                    child: Obx(() {
+                      final image = controller.selectedProductImage.value;
+                      return GestureDetector(
+                        onTap: ()=> controller.showEnlargedImage(image),
+                        child: CachedNetworkImage(
+                            imageUrl: image,
+                          progressIndicatorBuilder: (_,__,downloadProgress) => CircularProgressIndicator(value: downloadProgress.progress,color: UColors.primary),
+                        ),
+                      );
+                    },)
+                ),
               ),
             ),
 
@@ -39,24 +60,29 @@ class UProductImageSlider extends StatelessWidget {
               right: 0,
               bottom: 30,
               left: USizes.defaultSpace,
-              child: SizedBox(
-                height: 80,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 4,
-                  separatorBuilder: (_, __) => const SizedBox(width: USizes.spaceBtwItems,),
-                  itemBuilder: (_, index) {
-                    return URoundedImage(
-                      width: 80,
-                      backgroundColor: dark ? UColors.dark : UColors.light ,
-                      imageUrl: UImages.productImage1,
-                      padding: const EdgeInsets.all(USizes.sm),
-                      border: Border.all(color: UColors.primary),
-                    );
-                  },
+              child: Center(
+                child: SizedBox(
+                  height: 80,
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: images.length,
+                    separatorBuilder: (_, __) => const SizedBox(width: USizes.spaceBtwItems,),
+                    itemBuilder: (_, index) => Obx(() {
+                      final imageSelected = controller.selectedProductImage.value == images[index];
+                      return URoundedImage(
+                        width: 80,
+                        isNetworkImage: true,
+                        backgroundColor: dark ? UColors.dark : UColors.light ,
+                        imageUrl: images[index],
+                        padding: const EdgeInsets.all(USizes.sm),
+                        onPressed: () => controller.selectedProductImage.value = images[index],
+                        border: Border.all(color: imageSelected ? UColors.primary : Colors.transparent),
+                      );
+                    },)
 
+                  ),
                 ),
               ),
             ),
