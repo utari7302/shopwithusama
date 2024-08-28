@@ -82,23 +82,32 @@ class HomeScreen extends StatelessWidget {
                     title: 'Popular Products',
                     showActionButton: true,
                     textColor: UColors.black,
-                    onPressed: () => Get.to(() => const AllProductsScreen()),
+                    onPressed: () => Get.to(
+                      /// We can fetch products with query or as well as future method
+                      () => AllProductsScreen(
+                        title: 'Popular Products',
+                        // query: FirebaseFirestore.instance
+                        //     .collection('Products')
+                        //     .where('IsFeatured', isEqualTo: true)
+                        //     .limit(6),
+                        futureMethod: controller.fetchAllFeaturedProducts(),
+                      ),
+                    ),
                   ),
                   Obx(
                     () {
-                      if (controller.isLoading.value)
+                      if (controller.isLoading.value) {
                         return const UVerticalProductShimmer();
+                      }
 
                       if (controller.featuredProducts.isEmpty) {
                         return Center(
-                            child: Text('No Data Found!',
-                                style: Theme.of(context).textTheme.bodyMedium));
+                            child: Text('No Data Found!', style: Theme.of(context).textTheme.bodyMedium));
                       }
 
                       return UGridLayout(
                           itemCount: controller.featuredProducts.length,
-                          itemBuilder: (_, index) => UProductCardVertical(
-                              product: controller.featuredProducts[index]));
+                          itemBuilder: (_, index) => UProductCardVertical(product: controller.featuredProducts[index]));
                     },
                   )
                 ],

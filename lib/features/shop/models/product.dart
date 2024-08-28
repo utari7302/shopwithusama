@@ -110,11 +110,11 @@ class ProductModel {
       categoryId: data['CategoryId'] ?? '',
       images: List<String>.from(data['Images'] ?? []),
       productType: data['ProductType'] ?? '',
-      productAttributes: (data['ProductAttributes'] as List?)
-          ?.map((item) => ProductAttributeModel.fromJson(item))
+      productAttributes: (data['ProductAttributes'] as List<dynamic>)
+          .map((item) => ProductAttributeModel.fromJson(item))
           .toList(),
-      productVariations: (data['ProductVariations'] as List?)
-          ?.map((item) => ProductVariationModel.fromJson(item))
+      productVariations: (data['ProductVariations'] as List<dynamic>)
+          .map((item) => ProductVariationModel.fromJson(item))
           .toList(),
     );
   }

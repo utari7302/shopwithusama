@@ -20,7 +20,7 @@ class BrandProducts extends StatelessWidget {
             children: [
               UBrandCard(showBorder: true),
               SizedBox(height: USizes.spaceBtwItems,),
-              USortableProducts()
+              USortableProducts(products: [],)
             ],
           ),
         ),

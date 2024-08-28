@@ -23,6 +23,3 @@ Future<void> main() async {
   // Load all the Material Design / Themes / Localizations / Bindings
   runApp(const App());
 }
-
-
-
