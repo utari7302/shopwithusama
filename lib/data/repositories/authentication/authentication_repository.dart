@@ -8,9 +8,10 @@ import 'package:shopwithusama/features/authentication/screens/login/login.dart';
 import 'package:shopwithusama/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:shopwithusama/features/authentication/screens/signup/verify_email.dart';
 import 'package:shopwithusama/navigation_menu.dart';
-import 'package:shopwithusama/utils/exceptions/firebase_auth_exception.dart';
 
-import '../../../utils/exceptions/firebase_exception.dart';
+import '../../../utils/exceptions/firebase_auth_exceptions.dart';
+import '../../../utils/exceptions/firebase_exceptions.dart';
+
 
 class AuthenticationRepository extends GetxController {
 

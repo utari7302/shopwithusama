@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:shopwithusama/features/shop/models/category_model.dart';
 
-import '../../../utils/exceptions/firebase_auth_exception.dart';
-import '../../../utils/exceptions/firebase_exception.dart';
+import '../../../utils/exceptions/firebase_auth_exceptions.dart';
+import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../services/firebase_storage_service.dart';
 
 class CategoryRepository extends GetxController {

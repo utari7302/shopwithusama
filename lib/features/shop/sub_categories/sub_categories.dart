@@ -22,7 +22,7 @@ class SubCategoriesScreen extends StatelessWidget {
           child: Column(
             children: [
               /// Banner
-              const URoundedImage(imageUrl: UImages.promoBanner4,applyImageRadius: true,width: double.infinity,),
+              const URoundedImage(imageUrl: UImages.banner1,applyImageRadius: true,width: double.infinity,),
               const SizedBox(height: USizes.spaceBtwSections,),
 
               /// Sub-Categories

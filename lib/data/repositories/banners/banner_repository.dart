@@ -4,8 +4,8 @@ import 'package:get/get.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../features/shop/models/banner_model.dart';
-import '../../../utils/exceptions/firebase_auth_exception.dart';
-import '../../../utils/exceptions/firebase_exception.dart';
+import '../../../utils/exceptions/firebase_auth_exceptions.dart';
+import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../services/firebase_storage_service.dart';
 
 class BannerRepository extends GetxController{

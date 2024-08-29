@@ -24,19 +24,19 @@ class UDummyData {
         targetScreen: URoutes.favourites,
         active: true),
     BannerModel(
-        imageUrl: UImages.promoBanner4,
+        imageUrl: UImages.banner1,
         targetScreen: URoutes.search,
         active: true),
     BannerModel(
-        imageUrl: UImages.promoBanner5,
+        imageUrl: UImages.banner2,
         targetScreen: URoutes.settings,
         active: true),
     BannerModel(
-        imageUrl: UImages.promoBanner6,
+        imageUrl: UImages.banner3,
         targetScreen: URoutes.userAddress,
         active: true),
     BannerModel(
-        imageUrl: UImages.promoBanner6,
+        imageUrl: UImages.banner4,
         targetScreen: URoutes.checkout,
         active: true),
   ];
