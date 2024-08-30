@@ -55,8 +55,9 @@ class UProductCardVertical extends StatelessWidget {
                     ),
                   ),
 
-                  /// Size Tag
-                  Positioned(
+                  /// Sale Tag
+                  if(salePercentage != null)
+                    Positioned(
                     top: 12,
                     child: URoundedContainer(
                       radius: USizes.sm,

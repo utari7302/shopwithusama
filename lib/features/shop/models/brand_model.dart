@@ -40,4 +40,20 @@ class BrandModel {
       isFeatured: data['IsFeatured'] ?? false,
     );
   }
+
+  /// Map Json oriented document snapshot from Firebase to UserModel
+  factory BrandModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+    if(document.data()!=null){
+      final data = document.data()!;
+      return BrandModel(
+        id: document.id,
+        name: data['Name'] ?? '',
+        image: data['Image'] ?? '',
+        productsCount: data['ProductsCount'] ?? '',
+        isFeatured: data['IsFeatured'] ?? false,
+      );
+    }else{
+      return BrandModel.empty();
+    }
+  }
 }

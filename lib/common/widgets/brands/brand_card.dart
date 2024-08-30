@@ -8,13 +8,16 @@ import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
+import '../../../features/shop/models/brand_model.dart';
+
 class UBrandCard extends StatelessWidget {
   const UBrandCard({
-    super.key, required this.showBorder, this.onTap,
+    super.key, required this.showBorder, this.onTap, required this.brand,
   });
 
   final bool showBorder;
   final void Function()? onTap;
+  final BrandModel  brand;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +32,8 @@ class UBrandCard extends StatelessWidget {
           children: [
             Flexible(
               child: UCircularImage(
-                isNetworkImage: false,
-                image: UImages.clothIcon,
+                isNetworkImage: true,
+                image: brand.image,
                 backgroundColor: Colors.transparent,
                 overlayColor: dark ? UColors.white : UColors.black,
               ),
@@ -41,8 +44,8 @@ class UBrandCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const UBrandTitleWithVerification(title: 'Nike',brandTextSize: TextSizes.large,),
-                  Text('256 Products',overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.labelMedium,)
+                  UBrandTitleWithVerification(title: brand.name,brandTextSize: TextSizes.large,),
+                  Text('${brand.productsCount ?? 0} products',overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.labelMedium,)
                 ],
               ),
             ),

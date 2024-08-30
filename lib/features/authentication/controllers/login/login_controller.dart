@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shopwithusama/data/repositories/banners/banner_repository.dart';
+import 'package:shopwithusama/data/repositories/brand/brand_repository.dart';
 import 'package:shopwithusama/data/repositories/products/product_repository.dart';
 import 'package:shopwithusama/features/personalization/controllers/user_controller.dart';
 import 'package:shopwithusama/features/shop/models/dummy_data.dart';
@@ -29,6 +30,7 @@ class LoginController extends GetxController{
   final categoryRepository = Get.put(CategoryRepository());
   final bannerRepository = Get.put(BannerRepository());
   final productRepository = Get.put(ProductRepository());
+  final brandRepository = Get.put(BrandRepository());
 
 
   @override
@@ -76,6 +78,7 @@ class LoginController extends GetxController{
       //await categoryRepository.uploadDummyData(UDummyData.categories);
       //await bannerRepository.uploadDummyData(UDummyData.banners);
       //await productRepository.uploadDummyData(UDummyData.products);
+      await brandRepository.uploadDummyData(UDummyData.brands);
 
       // Remove Loader
       UFullScreenLoader.stopLoading();

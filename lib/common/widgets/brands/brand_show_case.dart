@@ -5,6 +5,8 @@ import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
+import '../../../features/shop/models/brand_model.dart';
+
 class UBrandShowCase extends StatelessWidget {
   const UBrandShowCase({
     super.key,
@@ -25,8 +27,9 @@ class UBrandShowCase extends StatelessWidget {
       child: Column(
         children: [
           /// Brand with product count
-          const UBrandCard(
+           UBrandCard(
             showBorder: false,
+            brand: BrandModel.empty(),
           ),
 
           /// Brand top 3 product images

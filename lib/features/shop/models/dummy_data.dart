@@ -113,6 +113,21 @@ class UDummyData {
         isFeatured: true),
   ];
 
+  /// -- List of all Brands
+  static final List<BrandModel> brands = [
+    BrandModel(id: '1', name: 'Nike', image: UImages.nikeLogo,isFeatured: true,productsCount: 256),
+    BrandModel(id: '2', name: 'Adidas', image: UImages.adidasLogo,isFeatured: true,productsCount: 95),
+    BrandModel(id: '3', name: 'Jordan', image: UImages.jordanLogo,isFeatured: true,productsCount: 36),
+    BrandModel(id: '4', name: 'Puma', image: UImages.pumaLogo,isFeatured: true,productsCount: 65),
+    BrandModel(id: '5', name: 'Apple', image: UImages.appleLogo,isFeatured: true,productsCount: 65),
+    BrandModel(id: '6', name: 'Zara', image: UImages.zaraLogo,isFeatured: false,productsCount: 65),
+    BrandModel(id: '7', name: 'Kenwood', image: UImages.kenwoodLogo,isFeatured: false,productsCount: 65),
+    BrandModel(id: '8', name: 'Herman Miller', image: UImages.hermanMillerLogo,isFeatured: false,productsCount: 65),
+    BrandModel(id: '9', name: 'Ikea', image: UImages.ikeaLogo,isFeatured: false,productsCount: 65),
+    BrandModel(id: '410', name: 'Acer', image: UImages.acerlogo,isFeatured: false,productsCount: 65),
+  ];
+
+  /// -- List of all Products
   static final List<ProductModel> products = [
     ProductModel(
       id: '001',
