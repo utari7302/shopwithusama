@@ -3,6 +3,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:shopwithusama/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:shopwithusama/common/widgets/icons/u_circular_icon.dart';
 import 'package:shopwithusama/common/widgets/images/u_rounded_image.dart';
+import 'package:shopwithusama/common/widgets/products/favourite_icon/favourite_icon.dart';
 import 'package:shopwithusama/common/widgets/products/product_cards/product_price_text.dart';
 import 'package:shopwithusama/common/widgets/text/product_title_text.dart';
 import 'package:shopwithusama/common/widgets/text/u_brand_title_text_with_verification_icon.dart';
@@ -61,10 +62,7 @@ class UProductCardHorizontal extends StatelessWidget {
                 const Positioned(
                   top: 0,
                   right: 0,
-                  child: UCircularIcon(
-                    icon: Iconsax.heart5,
-                    color: Colors.red,
-                  ),
+                  child: UFavouriteIcon(productId: '',),
                 )
               ],
             ),

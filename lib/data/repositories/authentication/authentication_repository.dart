@@ -8,6 +8,7 @@ import 'package:shopwithusama/features/authentication/screens/login/login.dart';
 import 'package:shopwithusama/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:shopwithusama/features/authentication/screens/signup/verify_email.dart';
 import 'package:shopwithusama/navigation_menu.dart';
+import 'package:shopwithusama/utils/local_storage/storage_utility.dart';
 
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
@@ -36,6 +37,9 @@ class AuthenticationRepository extends GetxController {
     final user = _auth.currentUser;
     if(user != null){
       if(user.emailVerified){
+        // Initialize user specific storage
+        await ULocalStorage.init(user.uid);
+
         Get.offAll(() => const NavigationMenu());
       }else{
         Get.offAll(() => VerifyEmailScreen(email: user.email,));
