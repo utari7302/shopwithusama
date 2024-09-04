@@ -29,11 +29,11 @@ class CategoryRepository extends GetxController {
   }
 
   /// Get sub categories
-  Future<List<CategoryModel>> getSubCategories() async {
+  Future<List<CategoryModel>> getSubCategories(String categoryId) async {
     try{
-      final snapshot = await _db.collection("Categories").get();
-      final list = snapshot.docs.map((document) => CategoryModel.fromSnapShot(document)).toList();
-      return list;
+      final snapshot = await _db.collection("Categories").where('ParentId',isEqualTo: categoryId).get();
+      final result = snapshot.docs.map((document) => CategoryModel.fromSnapShot(document)).toList();
+      return result;
     } on FirebaseAuthException catch (e) {
       throw UFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e) {
