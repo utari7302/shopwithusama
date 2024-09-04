@@ -3,7 +3,6 @@ import 'package:shopwithusama/data/repositories/categories/category_repository.d
 import 'package:shopwithusama/features/shop/models/product.dart';
 
 import '../../../data/repositories/products/product_repository.dart';
-import '../../../utils/popups/full_screen_loader.dart';
 import '../../../utils/popups/loaders.dart';
 import '../models/category_model.dart';
 
