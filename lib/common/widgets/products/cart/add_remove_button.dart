@@ -7,8 +7,11 @@ import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
 class UProductQuantityWithAddRemoveButton extends StatelessWidget {
   const UProductQuantityWithAddRemoveButton({
-    super.key,
+    super.key, required this.quantity, this.add, this.remove,
   });
+
+  final int quantity;
+  final VoidCallback? add, remove;
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +25,19 @@ class UProductQuantityWithAddRemoveButton extends StatelessWidget {
           size: USizes.md,
           color: UHelperFunctions.isDarkMode(context) ? UColors.white : UColors.black,
           backgroundColor: UHelperFunctions.isDarkMode(context) ? UColors.darkerGrey : UColors.light,
+          onPressed: remove,
         ),
         const SizedBox(width: USizes.spaceBtwItems,),
-        Text('2',style: Theme.of(context).textTheme.titleSmall,),
+        Text(quantity.toString(),style: Theme.of(context).textTheme.titleSmall,),
         const SizedBox(width: USizes.spaceBtwItems,),
-        const UCircularIcon(
+        UCircularIcon(
           icon: Iconsax.add,
           width: 32,
           height: 32,
           size: USizes.md,
           color: UColors.white,
           backgroundColor: UColors.primary,
+          onPressed: add,
         ),
       ],
     );

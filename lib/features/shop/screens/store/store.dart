@@ -34,10 +34,9 @@ class Store extends StatelessWidget {
             'Store',
             style: Theme.of(context).textTheme.headlineMedium,
           ),
-          actions: [
+          actions: const [
             UCartCounterIcon(
               iconColor: Colors.black,
-              onPressed: () {},
             )
           ],
         ),

@@ -18,6 +18,8 @@ import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
 
+import '../../../../features/shop/screens/store/widgets/add_to_cart_button.dart';
+
 class UProductCardVertical extends StatelessWidget {
   const UProductCardVertical({super.key, required this.product});
 
@@ -132,20 +134,7 @@ class UProductCardVertical extends StatelessWidget {
                 ),
 
                 /// Add to cart button
-                Container(
-                  decoration: const BoxDecoration(
-                      color: UColors.dark,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(USizes.cardRadiusMd),
-                        bottomRight: Radius.circular(USizes.productImageRadius),
-                      )
-                  ),
-                  child: const SizedBox(
-                    width: USizes.iconLg * 1.2,
-                    height: USizes.iconLg * 1.2,
-                    child: Center(child: Icon(Iconsax.add, color: UColors.white,)),
-                  ),
-                )
+                ProductCardAddToCartButton(product: product)
               ],
             ),
           ],
