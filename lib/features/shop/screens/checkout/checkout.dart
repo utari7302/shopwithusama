@@ -4,6 +4,7 @@ import 'package:shopwithusama/common/widgets/appbar/appbar.dart';
 import 'package:shopwithusama/common/widgets/custom_shapes/containers/rounded_container.dart';
 import 'package:shopwithusama/common/widgets/products/cart/coupon_widget.dart';
 import 'package:shopwithusama/common/widgets/success_screen/success_screen.dart';
+import 'package:shopwithusama/features/shop/controllers/product/cart_controller.dart';
 import 'package:shopwithusama/features/shop/screens/cart/widgets/cart_items.dart';
 import 'package:shopwithusama/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:shopwithusama/features/shop/screens/checkout/widgets/billing_amount_section.dart';
@@ -13,12 +14,20 @@ import 'package:shopwithusama/utils/constants/colors.dart';
 import 'package:shopwithusama/utils/constants/image_strings.dart';
 import 'package:shopwithusama/utils/constants/sizes.dart';
 import 'package:shopwithusama/utils/helpers/helper_functions.dart';
+import 'package:shopwithusama/utils/helpers/pricing_calculator.dart';
+
+import '../../../../utils/popups/loaders.dart';
+import '../../controllers/product/order_controller.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cartController= CartController.instance;
+    final subTotal = cartController.totalCartPrice.value;
+    final orderController= Get.put(OrderController());
+    final totalAmount = UPricingCalculator.calculateTotalPrice(subTotal, 'US');
     final dark = UHelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: UAppBar(
@@ -88,13 +97,8 @@ class CheckoutScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(USizes.defaultSpace),
         child: ElevatedButton(
-          onPressed: () => Get.to(() => SuccessScreen(
-                image: UImages.successfulPaymentIcon,
-                title: 'Payment Success!',
-                subTitle: 'Your item will be shipped soon!',
-                onPressed: () => Get.offAll(() => const NavigationMenu()),
-              )),
-          child: const Text('Checkout \$256.0'),
+          onPressed: subTotal > 0 ? () => orderController.processOrder(totalAmount) : () => ULoaders.warningSnackBar(title: 'Empty Cart', message: 'Add items in the cart in order to proceed.'),
+          child: Text('Checkout \$$totalAmount'),
         ),
       ),
     );

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopwithusama/common/widgets/text/section_heading.dart';
 import 'package:shopwithusama/data/repositories/address/address_repository.dart';
 import 'package:shopwithusama/features/personalization/models/address_model.dart';
+import 'package:shopwithusama/features/personalization/screens/address/add_new_address.dart';
+import 'package:shopwithusama/features/personalization/screens/address/widgets/single_address.dart';
+import 'package:shopwithusama/utils/constants/sizes.dart';
+import 'package:shopwithusama/utils/helpers/cloud_helper_function.dart';
 import 'package:shopwithusama/utils/network/network_manager.dart';
 import 'package:shopwithusama/utils/popups/loaders.dart';
 
@@ -41,14 +46,13 @@ class AddressController extends GetxController {
   Future selectAddress(AddressModel newSelectedAddress) async {
     try {
       Get.defaultDialog(
-        title: '',
-        onWillPop: () async {
-          return false;
-        },
-        barrierDismissible: false,
-        backgroundColor: Colors.transparent,
-        content: const CircularProgressIndicator()
-      );
+          title: '',
+          onWillPop: () async {
+            return false;
+          },
+          barrierDismissible: false,
+          backgroundColor: Colors.transparent,
+          content: const CircularProgressIndicator());
       // Clear the "selected" field
       if (selectedAddress.value.id.isNotEmpty) {
         await addressRepository.updateSelectedField(
@@ -111,7 +115,9 @@ class AddressController extends GetxController {
       UFullScreenLoader.stopLoading();
 
       // Show success message
-      ULoaders.successSnackBar(title: 'Congratulations', message: 'Your address has been saved successfully');
+      ULoaders.successSnackBar(
+          title: 'Congratulations',
+          message: 'Your address has been saved successfully');
 
       // Refresh Addresses Data
       refreshData.toggle();
@@ -128,7 +134,46 @@ class AddressController extends GetxController {
     }
   }
 
-  void resetFormFields(){
+  Future<dynamic> selectNewAddressPopup(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (_) => Container(
+        padding: const EdgeInsets.all(USizes.lg),
+        child: Column(
+          children: [
+            const USectionHeading(
+              title: 'Select Address',
+              showActionButton: false,
+            ),
+            FutureBuilder(
+              future: allUserAddresses(),
+              builder: (_, snapshot) {
+                final response = UCloudHelperFunction.checkMultiRecordState(
+                    snapshot: snapshot);
+                if (response != null) return response;
+
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (_, index) => USingleAddress(
+                    address: snapshot.data![index],
+                    onTap: () async {
+                      await selectAddress(snapshot.data![index]);
+                      Get.back();
+                    },
+                  ),
+                );
+              },
+            ),
+            const SizedBox(height: USizes.defaultSpace * 2),
+            SizedBox(width: double.infinity,child: ElevatedButton(onPressed: () => Get.to(()=> const AddNewAddressScreen()),child: const Text('Add new address'),),)
+          ],
+        ),
+      ),
+    );
+  }
+
+  void resetFormFields() {
     name.clear();
     phoneNumber.clear();
     street.clear();
